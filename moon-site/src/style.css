@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+@font-face {
+  font-family: DelightRegular;
+  src: url('../public/fonts/Delight/delight-regular.otf');
+}
+
+
+@font-face {
+  font-family: 'Feature Mono Hairline';
+  src: url('/fonts/FeatureMono/FeatureMono-Hairline.woff2') format('woff2'),
+    url('/fonts/FeatureMono/FeatureMono-Hairline.woff') format("opentype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Feature Mono';
+  src: url('/fonts/FeatureMono/FeatureMono-Regular.woff2') format('woff2'),
+    url('/fonts/FeatureMono/FeatureMono-Regular.woff') format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Feature Mono';
+  src: url('/fonts/FeatureMono/FeatureMono-Medium.woff2') format('woff2'),
+    url('/fonts/FeatureMono/FeatureMono-Medium.woff') format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Feature Mono';
+  src: url('/fonts/FeatureMono/FeatureMono-Light.woff2') format('woff2'),
+    url('/fonts/FeatureMono/FeatureMono-Light.woff') format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Feature Mono';
+  src: url('/fonts/FeatureMono/FeatureMono-Thin.woff2') format('woff2'),
+    url('/fonts/FeatureMono/FeatureMono-Thin.woff') format("opentype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Feature Mono';
+  src: url('/fonts/FeatureMono/FeatureMono-Bold.woff2') format('woff2'),
+    url('/fonts/FeatureMono/FeatureMono-Bold.woff') format("opentype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  background-color: #000;
+  margin: 0;
+  line-height: normal;
+  color: #fff;
+}

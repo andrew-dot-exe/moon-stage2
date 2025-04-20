@@ -16,6 +16,7 @@
 
 - `moon-colonization/` - Frontend часть проекта (Vue.js)
 - `backend/` - Backend часть проекта (Spring Boot)
+- `moon-site/` - Сайт проекта
 
 ## Настройка базы данных
 
@@ -32,7 +33,7 @@ CREATE DATABASE moon;
 3. Инициализируйте базу данных с помощью скрипта:
 
 ```sh
-psql -U postgres -d moon -f /Users/andrew/Projects/moon/backend/additional\ components/command\ for\ sql/init.sql
+psql -U postgres -d moon -f backend/additional\ components/command\ for\ sql/init.sql
 ```
 
 ## Запуск Backend
@@ -40,7 +41,7 @@ psql -U postgres -d moon -f /Users/andrew/Projects/moon/backend/additional\ comp
 1. Перейдите в директорию backend:
 
 ```sh
-cd /Users/andrew/Projects/moon/backend
+cd backend
 ```
 
 2. Настройте подключение к базе данных в файле `src/main/resources/application.properties`:
@@ -66,7 +67,7 @@ Backend будет запущен по адресу: `http://localhost:8080`
 1. Перейдите в директорию frontend:
 
 ```sh
-cd /Users/andrew/Projects/moon/moon-colonization
+cd moon-colonization
 ```
 
 2. Установите зависимости:
@@ -130,22 +131,43 @@ Frontend будет доступен по адресу: `http://localhost:5173`
 Для сборки JAR-файла:
 
 ```sh
-cd /Users/andrew/Projects/moon/backend
+cd backend
 mvn clean package
 ```
 
 Собранный JAR-файл будет находиться в директории `target/`.
 
-### Frontend
+### Frontend приложения "Колонизация Луны"
 
 Для сборки оптимизированной версии:
 
 ```sh
-cd /Users/andrew/Projects/moon/moon-colonization
+cd moon-colonization
 npm run build
 ```
 
 Собранные файлы будут находиться в директории `dist/`.
+
+### Сайт проекта
+
+Для запуска сайта проекта:
+
+```sh
+cd moon-site
+npm install
+npm run dev
+```
+
+Сайт будет доступен по адресу: `http://localhost:5174` (или следующему свободному порту).
+
+Для сборки оптимизированной версии сайта:
+
+```sh
+cd moon-site
+npm run build
+```
+
+Собранные файлы также будут находиться в директории `dist/`.
 
 ## Лицензия
 
