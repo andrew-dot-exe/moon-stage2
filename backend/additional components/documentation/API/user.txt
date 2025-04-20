@@ -1,0 +1,56 @@
+"user":
+    - Post: // вход
+        Ввод:
+        {
+            "name":"name1",
+            "email":"email1",
+            "password":"1234"
+        }
+        Вывод:
+        {
+           "name":"name1",
+           "id":1,
+           "curDay":0,
+           "dayBeforeDelivery":30,
+           "live":false,
+           "resources":[
+                {
+                    "type":0,
+                    "count":0,
+                    "production":0
+                }, ...
+            ],
+           "links":[
+                {
+                    "type":0,
+                    "idZone1":0,
+                    "idZone2":1
+                }, ...
+           ],
+           "modules":[
+                {
+                    "id":0,
+                    "id_user":1,
+                    "idZone":0,
+                    "moduleType":0,
+                    "x":0,
+                    "y":0
+                }, ...
+           ]
+        }
+    - Get(path = "user/{id}): //получение статистики по id пользователя
+        Ввод:
+        0 // id
+        Вывод:
+        {
+            "countDay":0,
+            "successful":0,
+            "countResources":[0,0,0,0,0,0,0,0],
+            "sumProduction":[0,0,0,0,0,0,0,0],
+            "sumConsumption":[0,0,0,0,0,0,0,0],
+            "zoneProductions":[ // производство в каждой зоне
+                "id":0,
+                "production":[0,0,0,0,0,0,0,0],
+                "consumption":[0,0,0,0,0,0,0,0],
+            ]
+        }

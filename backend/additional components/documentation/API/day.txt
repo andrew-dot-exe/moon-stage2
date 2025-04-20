@@ -1,0 +1,7 @@
+"day":
+    Get(path = "day/{idUser}): изменение дня
+        Вывод:
+        {
+            "live":true,
+            "diffResources":[0,0,0,0,0,0,0,0]
+        }

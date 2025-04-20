@@ -1,0 +1,22 @@
+"area": // информация про области и ячейки в них
+    Get:
+        Вывод:
+        [
+            {
+                "name":"Равнина 1",
+                "widthSecond":10000,
+                "longitudeSecond":10000,
+                "illumination":40,
+                "ways":[1,2,3,4,5,6], // расстояние до других областей
+                "cells":[
+                    [
+                        {
+                            "height":0,
+                            "angle":0.1,
+                            "widthSecond":10000,
+                            "longitudeSecond":10000
+                        }, ...
+                    ], ...
+                ]
+            }
+        ]

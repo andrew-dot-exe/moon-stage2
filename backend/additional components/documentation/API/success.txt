@@ -1,0 +1,12 @@
+"success":
+    Get(path = "{id}"):
+        Вывод:
+        {
+            "successful":0,
+            "mood":0,
+            "contPeople":0,
+            "needContPeople":0,
+            "resources":0,
+            "central":0,
+            "search":0
+        }

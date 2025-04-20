@@ -1,0 +1,37 @@
+"colony":
+    - Delete(path = "{idUser}"): // Для удаления колонии
+        Ввод: 1
+    - Post: // создание новой 
+        Ввод: 1 // idUser
+        Вывод:
+        {
+           "name":"name1",
+           "id":1,
+           "curDay":0,
+           "dayBeforeDelivery":30,
+           "live":false,
+           "resources":[
+                {
+                    "type":0,
+                    "count":0,
+                    "production":0
+                }, ...
+            ],
+           "links":[
+                {
+                    "type":0,
+                    "idZone1":0,
+                    "idZone2":1
+                }, ...
+           ],
+           "modules":[
+                {
+                    "id":0,
+                    "id_user":1,
+                    "idZone":0,
+                    "moduleType":0,
+                    "x":0,
+                    "y":0
+                }, ...
+           ]
+        }

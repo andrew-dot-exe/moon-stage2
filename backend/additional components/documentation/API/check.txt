@@ -1,0 +1,23 @@
+"check": // проверка на возможность поставить
+    Post:
+        Ввод:
+        {
+            "idUser":1,
+            "typeModule":0,
+            "x":0,
+            "y":0,
+            "idZone":0
+        }
+        Вывод:
+        {
+            "possible":true,
+            "relief":100,
+            "rationality":100
+        }
+
+        // Возможный вариант
+        {
+            "possible":false,
+            "relief":100,
+            "rationality":null
+        }

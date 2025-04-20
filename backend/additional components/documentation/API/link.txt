@@ -1,0 +1,22 @@
+"link":
+    - Delete:
+        Ввод:
+        {
+            "primaryKey":{
+                "type":0,
+                "id_user":1,
+                "id_zone1":0,
+                "id_zone2":1
+            }
+        }
+    - Post: // создание связи
+        Ввод:
+        {
+            "primaryKey":{
+                "type":0,
+                "id_user":1,
+                "id_zone1":0,
+                "id_zone2":1
+            }
+        }
+        Вывод: 0 // количество затраченных ресурсов
