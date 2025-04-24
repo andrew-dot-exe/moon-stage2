@@ -49,39 +49,39 @@ export const MODULE_TYPE_MAPPING = {
     footprint: [{ x: 0, z: 0 }, { x: 1, z: 0 }],
     category: 'habitable',
     icon: '/buildings/habitables/2x1living-module.png',
-    description: 'Жилые помещения для колонистов. Вмещает до 50 человек.',
+    description: 'Жилые помещения для колонистов.'/*,
     production: { co2: 5 },
-    consumption: { oxygen: 10, water: 8, energy: 12, food: 6 }
+    consumption: { oxygen: 10, water: 8, energy: 12, food: 6 }*/
   },
   LIVE_MODULE_Y: {
-    type: 'residential_complex_2x1',
-    size: '2x1',
-    footprint: [{ x: 0, z: 0 }, { x: 1, z: 0 }],
+    type: 'residential_complex_1x2',
+    size: '1x2',
+    footprint: [{ x: 0, z: 0 }, { x: 0, z: 1 }],
     category: 'habitable',
-    icon: '/buildings/habitables/2x1living-module.png',
-    description: 'Жилые помещения для колонистов. Улучшенная версия.',
+    icon: '/buildings/habitables/1x2living-module.png',
+    description: 'Жилые помещения для колонистов.'/*,
     production: { co2: 5 },
-    consumption: { oxygen: 8, water: 6, energy: 10, food: 5 }
+    consumption: { oxygen: 8, water: 6, energy: 10, food: 5 }*/
   },
   LIVE_ADMINISTRATIVE_MODULE: {
-    type: 'admin_module',
-    size: '1x1',
-    footprint: [{ x: 0, z: 0 }],
+    type: 'live_admin_module',
+    size: '2x2',
+    footprint: [{ x: 0, z: 0 }, { x: 1, z: 1 }],
     category: 'habitable',
     icon: '/buildings/habitables/admin-module.png',
-    description: 'Центр управления колонией. Повышает эффективность других модулей и улучшает настроение колонистов.',
+    description: 'Центр управления колонией.'/*,
     production: { energy: -5 },
-    consumption: {}
+    consumption: {}*/
   },
   ADMINISTRATIVE_MODULE: {
     type: 'admin_module',
-    size: '1x1',
-    footprint: [{ x: 0, z: 0 }],
+    size: '2x2',
+    footprint: [{ x: 0, z: 0 }, { x: 1, z: 1 }],
     category: 'technological',
     icon: '/buildings/habitables/admin-module.png',
-    description: 'Административный центр для управления нежилой инфраструктурой.',
+    description: 'Административный центр для управления нежилой инфраструктурой.'/*,
     production: {},
-    consumption: { energy: 5 }
+    consumption: { energy: 5 }*/
   },
   SPORT_MODULE: {
     type: 'sport_module',
@@ -89,9 +89,9 @@ export const MODULE_TYPE_MAPPING = {
     footprint: [{ x: 0, z: 0 }],
     category: 'habitable',
     icon: '/buildings/habitables/sport-module.png',
-    description: 'Модуль для физической активности колонистов. Улучшает настроение и здоровье.',
+    description: 'Модуль для физической активности колонистов. Улучшает настроение и здоровье.'/*,
     production: {},
-    consumption: { energy: 6 }
+    consumption: { energy: 6 }*/
   },
   MEDICAL_MODULE: {
     type: 'medical_module',
@@ -99,69 +99,70 @@ export const MODULE_TYPE_MAPPING = {
     footprint: [{ x: 0, z: 0 }],
     category: 'habitable',
     icon: '/buildings/habitables/medical-module.png',
-    description: 'Обеспечивает медицинскую помощь колонистам. Повышает общее здоровье и снижает смертность.',
+    description: 'Обеспечивает медицинскую помощь колонистам.'/*,
     production: {},
-    consumption: { energy: 8, water: 4 }
+    consumption: { energy: 8, water: 4 }*/
   },
   PLANTATION: {
     type: 'plantation',
-    size: '1x1',
-    footprint: [{ x: 0, z: 0 }],
+    size: '3x3',
+    footprint: [{ x: 0, z: 0 }, { x: 2, z: 2 }
+    ],
     category: 'habitable',
     icon: '/buildings/habitables/plantation.png',
-    description: 'Выращивание пищи. Производит пищевые ресурсы и потребляет воду.',
+    description: 'Выращивание пищи. Производит пищевые ресурсы и потребляет воду.'/*,
     production: { food: 15, oxygen: 8 },
-    consumption: { water: 10, energy: 7, co2: 5 }
+    consumption: { water: 10, energy: 7, co2: 5 }*/
   },
   RESEARCH_MODULE_PLANTATION: {
-    type: 'research_module',
+    type: 'p_research_module',
     size: '1x1',
     footprint: [{ x: 0, z: 0 }],
     category: 'habitable',
     icon: '/buildings/habitables/research-module.png',
-    description: 'Исследовательская лаборатория для улучшения сельскохозяйственных технологий.',
+    description: 'Исследовательская лаборатория для улучшения сельскохозяйственных технологий.'/*,
     production: {},
-    consumption: { energy: 12 }
+    consumption: { energy: 12 }*/
   },
   RESEARCH_MODULE_MINE: {
-    type: 'research_module',
+    type: 'm_research_module',
     size: '1x1',
     footprint: [{ x: 0, z: 0 }],
     category: 'habitable',
     icon: '/buildings/habitables/research-module.png',
-    description: 'Исследовательская лаборатория для улучшения горнодобывающих технологий.',
+    description: 'Исследовательская лаборатория для улучшения горнодобывающих технологий.'/*,
     production: {},
-    consumption: { energy: 12 }
+    consumption: { energy: 12 }*/
   },
   RESEARCH_MODULE_TELESCOPE: {
-    type: 'research_module',
+    type: 't_research_module',
     size: '1x1',
     footprint: [{ x: 0, z: 0 }],
     category: 'habitable',
     icon: '/buildings/habitables/research-module.png',
-    description: 'Исследовательская лаборатория для астрономических исследований.',
+    description: 'Исследовательская лаборатория для астрономических исследований.'/*,
     production: {},
-    consumption: { energy: 12 }
+    consumption: { energy: 12 }*/
   },
   RESEARCH_MODULE_TERRITORY: {
-    type: 'research_module',
+    type: 'ter_research_module',
     size: '1x1',
     footprint: [{ x: 0, z: 0 }],
     category: 'habitable',
     icon: '/buildings/habitables/research-module.png',
-    description: 'Исследовательская лаборатория для изучения лунной поверхности.',
+    description: 'Исследовательская лаборатория для изучения лунной поверхности.'/*,
     production: {},
-    consumption: { energy: 12 }
+    consumption: { energy: 12 }*/
   },
   HALLWAY: {
     type: 'hallway',
     size: '1x1',
     footprint: [{ x: 0, z: 0 }],
-    category: 'infrastructure',
-    icon: '/buildings/technological/repair-module.png',
-    description: 'Коридоры для соединения модулей колонии.',
+    category: 'habitable',
+    icon: '/buildings/habitables/hallway.png',
+    description: 'Коридоры для соединения модулей колонии.'/*,
     production: {},
-    consumption: { energy: 2 }
+    consumption: { energy: 2 }*/
   },
   
   // Технологические модули
@@ -171,29 +172,31 @@ export const MODULE_TYPE_MAPPING = {
     footprint: [{ x: 0, z: 0 }],
     category: 'technological',
     icon: '/buildings/technological/solar-power-plant.png',
-    description: 'Производит энергию для колонии из солнечного света.',
+    description: 'Производит энергию для колонии из солнечного света.'/*,
     production: { energy: 50 },
-    consumption: {}
+    consumption: {}*/
   },
   REPAIR_MODULE: {
     type: 'repair_module',
-    size: '1x1',
-    footprint: [{ x: 0, z: 0 }],
+    size: '2x2',
+    footprint: [{ x: 0, z: 0 }, { x: 1, z: 1 }],
     category: 'technological',
     icon: '/buildings/technological/repair-module.png',
-    description: 'Обслуживает и ремонтирует другие модули. Увеличивает срок службы всех модулей.',
+    description: 'Обслуживает и ремонтирует другие модули.'/*,
     production: {},
-    consumption: { energy: 8, construction: 2 }
+    consumption: { energy: 8, construction: 2 }*/
   },
   COSMODROME: {
     type: 'cosmodrome',
-    size: '2x2',
-    footprint: [{ x: 0, z: 0 }, { x: 1, z: 0 }, { x: 0, z: 1 }, { x: 1, z: 1 }],
+    size: '6x6',
+    footprint: [
+      { x: 0, z: 0 }, { x: 5, z: 5 }
+    ],
     category: 'infrastructure',
     icon: '/buildings/technological/cosmodrome.png',
-    description: 'Площадка для приема и отправки космических кораблей.',
+    description: 'Площадка для приема космических кораблей.'/*,
     production: {},
-    consumption: { energy: 30, fuel: 15 }
+    consumption: { energy: 30, fuel: 15 }*/
   },
   COMMUNICATION_TOWER: {
     type: 'communication_tower',
@@ -201,113 +204,113 @@ export const MODULE_TYPE_MAPPING = {
     footprint: [{ x: 0, z: 0 }],
     category: 'infrastructure',
     icon: '/buildings/technological/communication-tower.png',
-    description: 'Обеспечивает связь между модулями колонии и с Землей.',
+    description: 'Обеспечивает связь между модулями колонии и с Землей.'/*,
     production: {},
-    consumption: { energy: 8 }
+    consumption: { energy: 8 }*/
   },
   LANDFILL: {
     type: 'waste_center',
-    size: '1x1',
-    footprint: [{ x: 0, z: 0 }],
+    size: '2x2',
+    footprint: [{ x: 0, z: 0 }, { x: 1, z: 1 }],
     category: 'technological',
     icon: '/buildings/technological/waste-center.png',
-    description: 'Перерабатывает отходы в полезные ресурсы. Снижает загрязнение.',
+    description: 'Перерабатывает отходы в полезные ресурсы. Снижает загрязнение.'/*,
     production: { water: 2, construction: 1 },
-    consumption: { waste: 15, energy: 10 }
+    consumption: { waste: 15, energy: 10 }*/
   },
   LANDFILL_BIO: {
-    type: 'waste_center',
-    size: '1x1',
-    footprint: [{ x: 0, z: 0 }],
+    type: 'bio_waste_center',
+    size: '2x2',
+    footprint: [{ x: 0, z: 0 }, { x: 1, z: 1 }],
     category: 'technological',
     icon: '/buildings/technological/waste-center.png',
-    description: 'Специализированный центр для переработки биологических отходов.',
+    description: 'Специализированный центр для переработки биологических отходов.'/*,
     production: { water: 5, food: 2 },
-    consumption: { waste: 15, energy: 10 }
+    consumption: { waste: 15, energy: 10 }*/
   },
   MANUFACTURING_ENTERPRISE: {
     type: 'manufacture',
-    size: '2x1',
-    footprint: [{ x: 0, z: 0 }, { x: 1, z: 0 }],
+    size: '1x1',
+    footprint: [{ x: 0, z: 0 }],
     category: 'technological',
     icon: '/buildings/technological/manufacture.png',
-    description: 'Перерабатывает добытые ресурсы в строительные материалы и компоненты.',
+    description: 'Перерабатывает добытые ресурсы в строительные материалы и компоненты.'/*,
     production: { construction: 25 },
-    consumption: { energy: 20 }
+    consumption: { energy: 20 }*/
   },
   MANUFACTURING_ENTERPRISE_FUEL: {
-    type: 'manufacture',
-    size: '2x1',
-    footprint: [{ x: 0, z: 0 }, { x: 1, z: 0 }],
+    type: 'fuel_manufacture',
+    size: '1x1',
+    footprint: [{ x: 0, z: 0 }],
     category: 'technological',
     icon: '/buildings/technological/manufacture.png',
-    description: 'Специализированное производство топлива для космических кораблей.',
+    description: 'Специализированное производство топлива для космических кораблей.'/*,
     production: { fuel: 20 },
-    consumption: { energy: 25 }
+    consumption: { energy: 25 }*/
   },
   ASTRONOMICAL_SITE: {
     type: 'telescope',
-    size: '1x1',
-    footprint: [{ x: 0, z: 0 }],
+    size: '2x2',
+    footprint: [{ x: 0, z: 0 }, { x: 1, z: 1 }],
     category: 'infrastructure',
     icon: '/buildings/technological/telescope.png',
-    description: 'Наблюдение за космическим пространством. Способствует научному прогрессу.',
+    description: 'Наблюдение за космическим пространством. Способствует научному прогрессу.'/*,
     production: {},
-    consumption: { energy: 15 }
+    consumption: { energy: 15 }*/
   },
   MINE_BASE: {
     type: 'mining_base',
-    size: '2x1',
-    footprint: [{ x: 0, z: 0 }, { x: 1, z: 0 }],
+    size: '2x2',
+    footprint: [{ x: 0, z: 0 }, { x: 1, z: 1 }],
     category: 'technological',
     icon: '/buildings/technological/mining-base.png',
-    description: 'Добывает полезные ископаемые с лунной поверхности. Основной источник строительных материалов.',
+    description: 'Добывает полезные ископаемые с лунной поверхности.'/*,
     production: { construction: 35 },
-    consumption: { energy: 25 }
+    consumption: { energy: 25 }*/
   },
   WAREHOUSE_FOOD: {
-    type: 'warehouse',
-    size: '1x1',
-    footprint: [{ x: 0, z: 0 }],
+    type: 'food_warehouse',
+    size: '2x2',
+    footprint: [{ x: 0, z: 0 },{ x: 1, z: 1 }],
     category: 'technological',
     icon: '/buildings/technological/warehouse.png',
-    description: 'Хранилище для пищевых ресурсов. Увеличивает максимальное количество хранимой еды.',
+    description: 'Хранилище для пищевых ресурсов. Увеличивает максимальное количество хранимой еды.'/*,
     production: {},
     consumption: { energy: 3 },
-    storage: { capacity: 10000, type: 'food' }
+    storage: { capacity: 10000, type: 'food' }*/
   },
   WAREHOUSE_GASES: {
-    type: 'warehouse',
-    size: '1x1',
-    footprint: [{ x: 0, z: 0 }],
+    type: 'gases_warehouse',
+    size: '2x2',
+    footprint: [{ x: 0, z: 0 }, { x: 1, z: 1 }],
     category: 'technological',
     icon: '/buildings/technological/warehouse.png',
-    description: 'Хранилище для газов. Увеличивает максимальное количество хранимого кислорода и CO2.',
+    description: 'Хранилище для газов. Увеличивает максимальное количество хранимого кислорода и CO2.'/*,
     production: {},
     consumption: { energy: 3 },
-    storage: { capacity: 10000, type: 'gases' }
+    storage: { capacity: 10000, type: 'gases' }*/
   },
   WAREHOUSE_FUEL: {
-    type: 'warehouse',
-    size: '1x1',
-    footprint: [{ x: 0, z: 0 }],
+    type: 'fuel_warehouse',
+    size: '2x2',
+    footprint: [{ x: 0, z: 0 }, { x: 1, z: 1 }],
     category: 'technological',
     icon: '/buildings/technological/warehouse.png',
-    description: 'Хранилище для топлива. Увеличивает максимальное количество хранимого топлива.',
+    description: 'Хранилище для топлива. Увеличивает максимальное количество хранимого топлива.'/*,
     production: {},
     consumption: { energy: 3 },
-    storage: { capacity: 10000, type: 'fuel' }
+    storage: { capacity: 10000, type: 'fuel' }*/
   },
   WAREHOUSE_MATERIAL: {
-    type: 'warehouse',
-    size: '1x1',
-    footprint: [{ x: 0, z: 0 }],
+    type: 'material_warehouse',
+    size: '2x2',
+    footprint: [{ x: 0, z: 0 }, { x: 1, z: 1 }],
     category: 'technological',
     icon: '/buildings/technological/warehouse.png',
-    description: 'Хранилище для строительных материалов. Увеличивает максимальное количество хранимых материалов.',
+    description: 'Хранилище для строительных материалов. Увеличивает максимальное количество хранимых материалов.'/*,
     production: {},
     consumption: { energy: 3 },
-    storage: { capacity: 10000, type: 'material' }
+    storage: { capacity: 10000, type: 'material' }*/
   }
 }
 
@@ -334,9 +337,9 @@ export async function loadModuleTypes() {
           footprint: [{ x: 0, z: 0 }],
           category: moduleType.isLivingModule ? 'habitable' : 'technological',
           icon: '/buildings/technological/repair-module.png',
-          description: `Модуль типа ${moduleType.name}`,
+          description: `Модуль типа ${moduleType.name}`/*,
           production: {},
-          consumption: {}
+          consumption: {}*/
         }
         
         return {
@@ -369,8 +372,8 @@ export async function loadModuleTypes() {
  */
 function getReadableName(apiName) {
   const nameMap = {
-    'LIVE_MODULE_X': 'Жилой модуль тип X',
-    'LIVE_MODULE_Y': 'Жилой модуль тип Y',
+    'LIVE_MODULE_X': 'Жилой модуль',
+    'LIVE_MODULE_Y': 'Жилой модуль',
     'LIVE_ADMINISTRATIVE_MODULE': 'Жилой административный модуль',
     'ADMINISTRATIVE_MODULE': 'Административный модуль',
     'SPORT_MODULE': 'Спортивный модуль',
@@ -384,17 +387,17 @@ function getReadableName(apiName) {
     'SOLAR_POWER_PLANT': 'Солнечная электростанция',
     'REPAIR_MODULE': 'Ремонтный модуль',
     'COSMODROME': 'Космодром',
-    'COMMUNICATION_TOWER': 'Коммуникационная башня',
-    'LANDFILL': 'Центр утилизации',
-    'LANDFILL_BIO': 'Биологический центр утилизации',
+    'COMMUNICATION_TOWER': 'Вышка связи',
+    'LANDFILL': 'Мусорный полигон',
+    'LANDFILL_BIO': 'Мусорный полигон (биологических отходов)',
     'MANUFACTURING_ENTERPRISE': 'Производственное предприятие',
-    'MANUFACTURING_ENTERPRISE_FUEL': 'Производство топлива',
+    'MANUFACTURING_ENTERPRISE_FUEL': 'Производственное предприятие (топлива)',
     'ASTRONOMICAL_SITE': 'Астрономическая площадка',
-    'MINE_BASE': 'Горнодобывающая база',
-    'WAREHOUSE_FOOD': 'Склад пищи',
-    'WAREHOUSE_GASES': 'Склад газов',
-    'WAREHOUSE_FUEL': 'Склад топлива',
-    'WAREHOUSE_MATERIAL': 'Склад материалов'
+    'MINE_BASE': 'База шахты',
+    'WAREHOUSE_FOOD': 'Склад (пищи)',
+    'WAREHOUSE_GASES': 'Склад (газов)',
+    'WAREHOUSE_FUEL': 'Склад (топлива)',
+    'WAREHOUSE_MATERIAL': 'Склад (материалов)'
   }
   
   return nameMap[apiName] || apiName.replace(/_/g, ' ').toLowerCase()
@@ -535,6 +538,7 @@ export function getModuleCost(moduleType) {
  * @param {object|number} moduleType - Объект типа модуля или ID типа
  * @returns {object} - Объект с производством и потреблением ресурсов
  */
+/* Это на бэке
 export function getModuleResourceFlow(moduleType) {
   let moduleData
   
@@ -552,11 +556,11 @@ export function getModuleResourceFlow(moduleType) {
     production: moduleData.production || {},
     consumption: moduleData.consumption || {}
   }
-}
+}*/
 
 // Сохраняем совместимость со старыми функциями
 export const getBuildingById = getModuleTypeById
 export const getBuildingByType = getModuleTypeByName
 export const AVAILABLE_BUILDINGS = moduleTypesState.types
 export const getBuildingCost = getModuleCost
-export const getBuildingResourceFlow = getModuleResourceFlow
+//export const getBuildingResourceFlow = getModuleResourceFlow

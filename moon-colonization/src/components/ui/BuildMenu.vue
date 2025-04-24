@@ -197,7 +197,7 @@ const handleBuild = (item) => {
 
 <style scoped>
 .build-menu {
-  width: 100%;
+  width: 60%;
   max-width: 1500px;
   height: auto;
   min-height: 220px;
@@ -205,7 +205,7 @@ const handleBuild = (item) => {
   border: 1px solid #BCFE37;
   position: absolute;
   bottom: 20px;
-  left: 20px;
+  left: 80px;
   z-index: 1000;
   display: flex;
   flex-direction: column;

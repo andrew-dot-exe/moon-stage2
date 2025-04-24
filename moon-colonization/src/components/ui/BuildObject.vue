@@ -46,7 +46,7 @@ const handleClick = () => {
   background: #454545;
   padding: 10px;
   border-radius: 4px;
-  width: 640px;
+  /*width: 640px;*/
   cursor: pointer;
   transition: all 0.2s ease;
 }

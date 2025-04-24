@@ -18,12 +18,45 @@ export async function confirmBuildingPlacement({ selectedItem, selectedCell, thr
     z: selectedCell.value.z 
   }
   
-  const key = `${coords.x},${coords.z}`
+  // Получаем footprint здания (может быть одной точкой или прямоугольником)
+  const footprint = selectedItem.value.footprint || [{x:0,z:0}];
   
-  // Проверяем, нет ли уже здания в этой ячейке
-  if (buildings.value[key]) {
-    errorMessage.value = 'На этой ячейке уже есть постройка'
-    return false
+  // Определяем границы здания
+  let minX, maxX, minZ, maxZ;
+  
+  if (footprint.length === 1) {
+    // Одноячеечное здание
+    minX = maxX = selectedCell.value.x;
+    minZ = maxZ = selectedCell.value.z;
+  } else {
+    // Многоячеечное здание - рассчитываем относительно выбранной ячейки
+    const [startPos, endPos] = footprint;
+    const offsetX = selectedCell.value.x - startPos.x;
+    const offsetZ = selectedCell.value.z - startPos.z;
+    
+    minX = offsetX + Math.min(startPos.x, endPos.x);
+    maxX = offsetX + Math.max(startPos.x, endPos.x);
+    minZ = offsetZ + Math.min(startPos.z, endPos.z);
+    maxZ = offsetZ + Math.max(startPos.z, endPos.z);
+  }
+  // Проверяем все ячейки в области
+  for (let x = minX; x <= maxX; x++) {
+    for (let z = minZ; z <= maxZ; z++) {
+      const cellKey = `${x},${z}`;
+      const cell = cells.value[cellKey];
+      
+      // Проверяем существование ячейки
+      if (!cell) {
+        errorMessage.value = `Ячейка ${cellKey} находится за границами карты`;
+        return false;
+      }
+      
+      // Проверяем занятость ячейки
+      if (cell.isOccupied || buildings.value[cellKey]) {
+        errorMessage.value = `Область строительства пересекается с существующей постройкой (${cellKey})`;
+        return false;
+      }
+    }
   }
   
   const store = useGameStore()
@@ -42,21 +75,32 @@ export async function confirmBuildingPlacement({ selectedItem, selectedCell, thr
       // используем карту соответствия типов модулей
       if (!moduleTypeId) {
         const typeToIdMap = {
-          'residential_complex_2x1': 1,
-          'admin_module': 2,
-          'medical_module': 3,
-          'sport_module': 4,
-          'research_module': 5,
-          'plantation': 6,
-          'solar_power_plant': 10,
-          'mining_base': 11,
-          'manufacture': 12,
-          'warehouse': 13,
-          'waste_center': 14,
-          'repair_module': 15,
-          'communication_tower': 20,
-          'telescope': 21,
-          'cosmodrome': 22
+          'residential_complex_2x1': 0,
+          'residential_complex_1x2': 1,
+          'live_admin_module': 2,
+          'admin_module': 11,
+          'medical_module': 4,
+          'sport_module': 3,
+          'p_research_module': 6,
+          'm_research_module': 7,
+          't_research_module': 8,
+          'ter_research_module': 9,
+          'plantation': 5,
+          'hallway': 10,
+          'solar_power_plant': 12,
+          'mining_base': 21,
+          'manufacture': 18,
+          'fuel_manufacture': 19,
+          'food_warehouse': 22,
+          'gases_warehouse': 23,
+          'fuel_warehouse': 24,
+          'material_warehouse': 25,
+          'waste_center':16,
+          'bio_waste_center': 17,
+          'repair_module': 13,
+          'communication_tower':15,
+          'telescope':20,
+          'cosmodrome':14
         };
         
         moduleTypeId = typeToIdMap[selectedItem.value.type] || null;
@@ -114,6 +158,7 @@ export async function confirmBuildingPlacement({ selectedItem, selectedCell, thr
       selectedItem.value = null
       showBuildMenu.value = false
       
+      // TODO несколько ячеек?
       // Обновляем внешний вид клетки, чтобы показать здание
       if (selectedCell.value) {
         selectedCell.value.isOccupied = true
@@ -145,6 +190,105 @@ export async function confirmBuildingPlacement({ selectedItem, selectedCell, thr
  * @param {object} params.three - Объекты three.js
  * @returns {Promise} - Промис, разрешающийся после завершения отрисовки
  */
+// TODO проверить на работоспособность
+export function renderBuilding({ iconPath, footprint, buildings, cells, selectedItem, three }) {
+  return new Promise((resolve, reject) => {
+    const textureLoader = new THREE.TextureLoader();
+    
+    textureLoader.load(iconPath, 
+      (texture) => {
+        texture.minFilter = THREE.LinearFilter;
+        texture.magFilter = THREE.LinearFilter;
+
+        // Определяем границы здания
+        let minX, maxX, minZ, maxZ;
+        
+        if (footprint.length === 1) {
+          minX = maxX = footprint[0].x;
+          minZ = maxZ = footprint[0].z;
+        } else {
+          const [startPos, endPos] = footprint;
+          minX = Math.min(startPos.x, endPos.x);
+          maxX = Math.max(startPos.x, endPos.x);
+          minZ = Math.min(startPos.z, endPos.z);
+          maxZ = Math.max(startPos.z, endPos.z);
+        }
+
+        // Размеры здания в ячейках
+        const width = maxX - minX + 1;
+        const depth = maxZ - minZ + 1;
+
+        // Создаем геометрию для всего здания
+        const geometry = new THREE.PlaneGeometry(width, depth);
+        
+        // Настраиваем UV-координаты для правильного растягивания текстуры
+        const uvAttribute = geometry.attributes.uv;
+        for (let i = 0; i < uvAttribute.count; i++) {
+          uvAttribute.setX(i, uvAttribute.getX(i) * width);
+          uvAttribute.setY(i, uvAttribute.getY(i) * depth);
+        }
+        uvAttribute.needsUpdate = true;
+
+        // Создаем материал с текстурой
+        const material = new THREE.MeshBasicMaterial({
+          map: texture,
+          side: THREE.DoubleSide,
+          transparent: true
+        });
+
+        // Создаем mesh для всего здания
+        const buildingMesh = new THREE.Mesh(geometry, material);
+        buildingMesh.position.set(
+          minX + width / 2 - 0.5, // Центрируем по X
+          0.01, // Немного выше поверхности
+          minZ + depth / 2 - 0.5  // Центрируем по Z
+        );
+        buildingMesh.rotation.x = -Math.PI / 2; // Разворачиваем горизонтально
+
+        // Добавляем mesh в сцену
+        three.scene.add(buildingMesh);
+
+        // Помечаем ячейки как занятые
+        const buildingCells = [];
+        for (let x = minX; x <= maxX; x++) {
+          for (let z = minZ; z <= maxZ; z++) {
+            const key = `${x},${z}`;
+            const cell = cells.value[key];
+            if (cell) {
+              cell.isOccupied = true;
+              cell._hasBuilding = true;
+              buildingCells.push(cell);
+            }
+          }
+        }
+
+        // Сохраняем здание
+        const buildingKey = `${minX},${minZ}`; // Используем первую ячейку как ключ
+        buildings.value[buildingKey] = new BuildingEntity(
+          buildingMesh,
+          minX,
+          minZ,
+          {
+            type: selectedItem.value?.type || null,
+            footprint: footprint.length === 1 ? [footprint[0]] : footprint,
+            iconPath: iconPath,
+            cells: buildingCells,
+            width,
+            depth
+          }
+        );
+
+        resolve();
+      },
+      undefined,
+      (error) => {
+        console.error('Ошибка загрузки текстуры:', error);
+        reject(error);
+      }
+    );
+  });
+}
+/*
 export function renderBuilding({ iconPath, footprint, buildings, cells, selectedItem, three }) {
   return new Promise((resolve, reject) => {
     // Загрузка текстуры здания
@@ -278,7 +422,7 @@ export function renderBuilding({ iconPath, footprint, buildings, cells, selected
     )
   })
 }
-
+*/
 /**
  * Удаление постройки с карты
  * @param {object} params

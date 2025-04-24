@@ -156,21 +156,32 @@ export const moduleAPI = {
       // Возвращаем статические данные для резервного варианта
       return {
         moduleTypes: [
-          { id: 1, name: 'residential_complex_2x1', isLivingModule: true, cost: 9500, peopleRequired: 5 },
-          { id: 2, name: 'admin_module', isLivingModule: false, cost: 16000, peopleRequired: 3 },
-          { id: 3, name: 'medical_module', isLivingModule: false, cost: 12000, peopleRequired: 4 },
-          { id: 4, name: 'sport_module', isLivingModule: false, cost: 5000, peopleRequired: 2 },
-          { id: 5, name: 'research_module', isLivingModule: false, cost: 14000, peopleRequired: 4 },
-          { id: 6, name: 'plantation', isLivingModule: false, cost: 8000, peopleRequired: 3 },
-          { id: 10, name: 'solar_power_plant', isLivingModule: false, cost: 7500, peopleRequired: 1 },
-          { id: 11, name: 'mining_base', isLivingModule: false, cost: 25000, peopleRequired: 5 },
-          { id: 12, name: 'manufacture', isLivingModule: false, cost: 20000, peopleRequired: 4 },
-          { id: 13, name: 'warehouse', isLivingModule: false, cost: 6000, peopleRequired: 1 },
-          { id: 14, name: 'waste_center', isLivingModule: false, cost: 8000, peopleRequired: 2 },
-          { id: 15, name: 'repair_module', isLivingModule: false, cost: 10000, peopleRequired: 3 },
-          { id: 20, name: 'communication_tower', isLivingModule: false, cost: 12000, peopleRequired: 2 },
-          { id: 21, name: 'telescope', isLivingModule: false, cost: 18000, peopleRequired: 3 },
-          { id: 22, name: 'cosmodrome', isLivingModule: false, cost: 50000, peopleRequired: 8, terrainRequirements: { minAreaSize: 100, maxSlope: 2.5 } }
+          { id: 0, name: 'residential_complex_2x1', isLivingModule: true, cost: 9500, peopleRequired: 0 },
+          { id: 1, name: 'residential_complex_1x2', isLivingModule: true, cost: 9500, peopleRequired: 0 },
+          { id: 2, name: 'live_admin_module', isLivingModule: true, cost: 16000, peopleRequired: 2 },
+          { id: 11, name: 'admin_module', isLivingModule: false, cost: 16000, peopleRequired: 2 },
+          { id: 4, name: 'medical_module', isLivingModule: true, cost: 5000, peopleRequired: 1 },
+          { id: 3, name: 'sport_module', isLivingModule: true, cost: 5000, peopleRequired: 0 },
+          { id: 6, name: 'p_research_module', isLivingModule: true, cost: 5000, peopleRequired: 1 },
+          { id: 7, name: 'm_research_module', isLivingModule: true, cost: 5000, peopleRequired: 1 },
+          { id: 8, name: 't_research_module', isLivingModule: true, cost: 5000, peopleRequired: 1 },
+          { id: 9, name: 'ter_research_module', isLivingModule: true, cost: 5000, peopleRequired: 1 },
+          { id: 5, name: 'plantation', isLivingModule: true, cost: 42000, peopleRequired: 3 },
+          { id: 10, name: 'hallway', isLivingModule: true, cost: 3500, peopleRequired: 0 },
+          { id: 12, name: 'solar_power_plant', isLivingModule: false, cost: 900, peopleRequired: 0 },
+          { id: 21, name: 'mining_base', isLivingModule: false, cost: 20000, peopleRequired: 1 },
+          { id: 18, name: 'manufacture', isLivingModule: false, cost: 4200, peopleRequired: 1 },
+          { id: 19, name: 'fuel_manufacture', isLivingModule: false, cost: 4200, peopleRequired: 1 },
+          { id: 22, name: 'food_warehouse', isLivingModule: false, cost: 14000, peopleRequired: 0 },
+          { id: 23, name: 'gases_warehouse', isLivingModule: false, cost: 14000, peopleRequired: 0 },
+          { id: 24, name: 'fuel_warehouse', isLivingModule: false, cost: 14000, peopleRequired: 0 },
+          { id: 25, name: 'material_warehouse', isLivingModule: false, cost: 14000, peopleRequired: 0 },
+          { id: 16, name: 'waste_center', isLivingModule: false, cost: 15000, peopleRequired: 1 },
+          { id: 17, name: 'bio_waste_center', isLivingModule: false, cost: 15000, peopleRequired: 1 },
+          { id: 13, name: 'repair_module', isLivingModule: false, cost: 15000, peopleRequired: 2 },
+          { id: 15, name: 'communication_tower', isLivingModule: false, cost: 1000, peopleRequired: 0 },
+          { id: 20, name: 'telescope', isLivingModule: false, cost: 30000, peopleRequired: 0 },
+          { id: 14, name: 'cosmodrome', isLivingModule: false, cost: 900, peopleRequired: 2 }
         ]
       };
     });
@@ -202,7 +213,7 @@ export const moduleAPI = {
       console.error('Ошибка: координата y не указана');
       return Promise.reject(new Error('Координата Y обязательна'));
     }
-    
+    /* бэк
     // Проверка космодрома на соответствие требованиям рельефа
     if (moduleData.module_type === 22) { // Космодром
       console.log('Проверка требований к рельефу для космодрома');
@@ -226,7 +237,7 @@ export const moduleAPI = {
           console.error('Ошибка при создании модуля через API:', error);
           return Promise.reject(error);
         });
-    }
+    }*/
     
     // Логирование данных для отладки
     console.log('Отправка запроса на создание модуля с данными:', moduleData);
